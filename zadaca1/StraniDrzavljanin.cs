@@ -4,14 +4,14 @@ namespace zadaca1
     public class StraniDrzavljanin : Klijent
     {
         private String grad;
-        private String drzava;
+        private Drzava drzava;
         public StraniDrzavljanin()
         {
             this.grad = "";
-            this.drzava = "";
+            this.drzava = new Drzava();
         }
 
-        public StraniDrzavljanin(string grad, string drzava)
+        public StraniDrzavljanin(String grad, Drzava drzava)
         {
             this.grad = grad;
             this.drzava = drzava;

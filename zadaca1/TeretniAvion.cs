@@ -3,13 +3,13 @@ namespace zadaca1
 {
     public class TeretniAvion : Avion
     {
-        private int ukupniKapacitet { get; set; }
+        private double ukupniKapacitet { get; set; }
         public TeretniAvion()
         {
             ukupniKapacitet = 0;
         }
 
-        public TeretniAvion(int ukupniKapacitet)
+        public TeretniAvion(double ukupniKapacitet)
         {
             this.ukupniKapacitet = ukupniKapacitet;
         }

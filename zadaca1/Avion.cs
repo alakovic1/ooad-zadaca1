@@ -20,7 +20,7 @@ namespace zadaca1
             if(id.Length == 9)
             {
                 for(int i = 0; i < id.Length; i++) {
-                    if((id[i] >= 'a' && id[i] <= 'z') || (id[i] >= 'A' && id[i] <= 'Z') || (id[i] >= '1' && id[i] <= '5'))
+                    if((id[i] >= 'a' && id[i] <= 'z') || (id[i] >= '1' && id[i] <= '5'))
                     {
                         this.id = id;
                     }
