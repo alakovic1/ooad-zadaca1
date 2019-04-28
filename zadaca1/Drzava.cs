@@ -7,7 +7,8 @@ namespace zadaca1
         private int brojStanovnika { get; set; }
         public Drzava()
         {
-
+            this.nazivDrzave = "";
+            this.brojStanovnika = 0;
         }
 
         public Drzava(String naziv)
