@@ -16,16 +16,17 @@ namespace zadaca1
             this.ke.Avioni = avioni;
         }
 
-        public bool pretraga(Avion avion)
+        List<Avion> Ipretraga<Avion>.pretraga(Avion avion)
         {
+            List<Avion> avioni = new List<Avion>();
             for (int i = 0; i < ke.Avioni.Count; i++)
             {
                 if (avion.Vrsta == ke.Avioni[i].Vrsta && avion.Sjedista == ke.Avioni[i].Sjedista)
                 {
-                    return true;
+                    avioni.Add(ke.Avioni[i]);
                 }
             }
-            return false;
+            return avioni;
         }
     }
 }

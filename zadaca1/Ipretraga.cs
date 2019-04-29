@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace zadaca1
 {
     interface Ipretraga<Avion>
     {
-        bool pretraga(Avion avion);
+        List<Avion> pretraga(Avion avion);
     }
 }

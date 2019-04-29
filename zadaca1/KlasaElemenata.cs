@@ -11,7 +11,15 @@ namespace zadaca1
         public List<Klijent> Klijenti { get { return klijenti; } set { klijenti = value; } }
         public KlasaElemenata()
         {
-            napuniBazu();   
+            //napuniBazu();   
+        }
+        public void dodajAvion(Avion avion)
+        {
+            this.avioni.Add(avion);
+        }
+        public void dodajKlijenta(Klijent klijent)
+        {
+            this.klijenti.Add(klijent);
         }
         public void napuniBazu() {
             Avion a = new Avion("vrsta", 13, "123451234");
