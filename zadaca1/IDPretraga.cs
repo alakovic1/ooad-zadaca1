@@ -5,21 +5,24 @@ namespace zadaca1
 {
     public class IDPretraga : Ipretraga<Avion>
     {
-        private List<Avion> avioni { get; set; }
-
+        private KlasaElemenata ke = new KlasaElemenata();
         public IDPretraga()
         {
-            this.avioni = new List<Avion>();
+            this.ke.Avioni = new List<Avion>();
         }
 
         public IDPretraga(List<Avion> avioni)
         {
-            this.avioni = avioni;
+            this.ke.Avioni = avioni;
         }
 
         public bool pretraga(Avion avion)
         {
-            //if ( == 0) return true;
+            for(int i = 0; i < ke.Avioni.Count; i++) { 
+                if(avion.ID == ke.Avioni[i].ID) {
+                    return true;
+                }
+            }
             return false;
         }
     }

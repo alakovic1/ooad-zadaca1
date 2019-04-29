@@ -3,9 +3,12 @@ namespace zadaca1
 {
     public class Klijent
     {
-        private String imeIprezime { get; set; }
-        private DateTime datumRodjenja { get; set; }
-        private String jmbg { get; set; }
+        private String imeIprezime;
+        private DateTime datumRodjenja;
+        private String jmbg;
+        public String Naziv { get { return imeIprezime; } set { imeIprezime = value; } }
+        public DateTime Datum { get { return datumRodjenja; } set { datumRodjenja = value; } }
+        public String JMBG { get { return jmbg; } set { jmbg = value; } }
         public Klijent()
         {
             this.imeIprezime = "";
