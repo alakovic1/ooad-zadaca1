@@ -11,7 +11,7 @@ namespace zadaca1
             this.drzava = new Drzava();
         }
 
-        public StraniDrzavljanin(String grad, Drzava drzava)
+        public StraniDrzavljanin(String imeIprezime, DateTime datumRodjenja, String jmbg, String grad, Drzava drzava) : base(imeIprezime, datumRodjenja, jmbg)
         {
             this.grad = grad;
             this.drzava = drzava;

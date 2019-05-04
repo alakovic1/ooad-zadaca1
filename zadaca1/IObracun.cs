@@ -3,6 +3,6 @@ namespace zadaca1
 {
     public interface IObracun
     {
-        void NekaMetoda();
+        double RacunajCijenu(Klijent trenutniKlijent);
     }
 }

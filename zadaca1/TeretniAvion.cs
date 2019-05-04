@@ -3,10 +3,11 @@ namespace zadaca1
 {
     public class TeretniAvion : Avion
     {
-        private double ukupniKapacitet { get; set; }
-        public TeretniAvion()
+        private double ukupniKapacitet;
+        public double Kapacitet { get { return ukupniKapacitet; } set { ukupniKapacitet = value; } }
+        public TeretniAvion(string vrstaAviona, int brojSjedista, string id, double ukupniKapacitet) : base(vrstaAviona, brojSjedista, id)
         {
-            ukupniKapacitet = 0;
+            this.ukupniKapacitet = ukupniKapacitet;
         }
 
         public TeretniAvion(double ukupniKapacitet)

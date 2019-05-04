@@ -5,6 +5,8 @@ namespace zadaca1
     {
         private String nazivDrzave { get; set; }
         private int brojStanovnika { get; set; }
+        public String Naziv { get { return nazivDrzave; } set { nazivDrzave = value; } }
+        public int BrojStanovnika { get { return brojStanovnika; } set { brojStanovnika = value; } }
         public Drzava()
         {
             this.nazivDrzave = "";
@@ -14,6 +16,7 @@ namespace zadaca1
         public Drzava(String naziv)
         {
             this.nazivDrzave = naziv;
+            this.brojStanovnika = 5000000;
         }
 
         public Drzava(String naziv, int broj)
