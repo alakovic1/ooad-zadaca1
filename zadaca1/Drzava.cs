@@ -3,8 +3,8 @@ namespace zadaca1
 {
     public class Drzava
     {
-        private String nazivDrzave { get; set; }
-        private int brojStanovnika { get; set; }
+        private String nazivDrzave;
+        private int brojStanovnika;
         public String Naziv { get { return nazivDrzave; } set { nazivDrzave = value; } }
         public int BrojStanovnika { get { return brojStanovnika; } set { brojStanovnika = value; } }
         public Drzava()

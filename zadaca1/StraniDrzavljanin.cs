@@ -5,6 +5,8 @@ namespace zadaca1
     {
         private String grad;
         private Drzava drzava;
+        public String Grad { get { return grad; } set { grad = value; } }
+        public Drzava Drzava { get { return drzava; } set { drzava = value; } }
         public StraniDrzavljanin()
         {
             this.grad = "";
