@@ -36,7 +36,7 @@ namespace zadaca1
                     Console.WriteLine("Unesite podatke o avionu: ");
                     IZBOR: Console.WriteLine("Izaberite: 1 - putnicki avion, 2 - teretni avion: ");
                     String v = Convert.ToString(Console.ReadLine());
-                    if(v != "1" && v!="2") {
+                    if(v != "1" && v != "2") {
                         Console.WriteLine("Pokusajte ponovo: ");
                         goto IZBOR;
                     }
@@ -56,6 +56,25 @@ namespace zadaca1
                     }
                     ID: Console.WriteLine("Unesite ID aviona (duzine 9, samo mala slova i brojevi (1 - 5)): ");
                     String id = Convert.ToString(Console.ReadLine());
+                    bool netacno = false;
+                    if(id.Length != 9) {
+                        Console.WriteLine("Neispravan ID! Pokusajte ponovo: ");
+                        goto ID;
+                    }
+                    if (id.Length == 9)
+                    {
+                        for (int i = 0; i < id.Length; i++)
+                        {
+                            if ((id[i] < '1' || (id[i] > '5' && id[i] < 'a') || id[i] > 'z'))
+                            {
+                                netacno = true;
+                            }
+                        }
+                        if (netacno) {
+                            Console.WriteLine("Neispravan ID! Pokusajte ponovo: ");
+                            goto ID;
+                        }
+                    }
                     if (v == "1") {
                         avion = new PutnickiAvion(vrsta,b,id);
                         if (avion.ID == "")
@@ -75,11 +94,6 @@ namespace zadaca1
                             }
                             if(!ima) d.Add(new Drzava(nazivDrzave));
                             LetUInostranstvo novi = new LetUInostranstvo(vrsta, b, id, d);
-                            if (novi.ID == "")
-                            {
-                                Console.WriteLine("Neispravan ID! Pokusajte ponovo: ");
-                                goto ID;
-                            }
                             avion = novi;
                             ke.dodajAvion(avion);
                             Console.WriteLine("Uspjesno dodan avion!");
@@ -105,11 +119,6 @@ namespace zadaca1
                             goto TERETNI;
                         }
                         avion = new TeretniAvion(vrsta, b, id, tAvion);
-                        if (avion.ID == "")
-                        {
-                            Console.WriteLine("Neispravan ID! Pokusajte ponovo: ");
-                            goto ID;
-                        }
                         ke.dodajAvion(avion);
                         Console.WriteLine("Uspjesno dodan avion!");
                     }
@@ -159,13 +168,12 @@ namespace zadaca1
                     DateTime datumKlijenta = new DateTime(godina, mjesec,dan,0,0,0);
                     JMBG: Console.WriteLine("Unesite JMBG (6 karaktera): ");
                     String jmbgKlijenta = Convert.ToString(Console.ReadLine());
-                    if(k == "1") {
+                    if(jmbgKlijenta.Length != 6) {
+                        Console.WriteLine("Neispravan JMBG! Pokusajte ponovo: ");
+                        goto JMBG;
+                    }
+                    if (k == "1") {
                         klijent = new DomaciDrzavljanin(imeIPrezimeKlijenta,datumKlijenta,jmbgKlijenta);
-                        if (klijent.JMBG == "")
-                        {
-                            Console.WriteLine("Neispravan JMBG! Pokusajte ponovo: ");
-                            goto JMBG;
-                        }
                         ke.dodajKlijenta(klijent);
                         Console.WriteLine("Uspjesno dodan klijent!");
                     }
@@ -175,11 +183,6 @@ namespace zadaca1
                         Console.WriteLine("Unesite drzavu stanovanja: ");
                         Drzava drzava = new Drzava(Convert.ToString(Console.ReadLine()));
                         klijent = new StraniDrzavljanin(imeIPrezimeKlijenta, datumKlijenta, jmbgKlijenta,grad,drzava);
-                        if (klijent.JMBG == "")
-                        {
-                            Console.WriteLine("Neispravan JMBG! Pokusajte ponovo: ");
-                            goto JMBG;
-                        }
                         ke.dodajKlijenta(klijent);
                         Console.WriteLine("Uspjesno dodan klijent!");
                     }
@@ -239,7 +242,7 @@ namespace zadaca1
                                 Console.WriteLine("Avion pronadjen!");
                                 Console.WriteLine("Svi avioni na raspolaganju: ");
                                 for(int i = 0; i < p.pretraga(avion).Count; i++) {
-                                    Console.WriteLine("Avion {0}: vrsta: {1}, broj sjedista: {2}, id: {3}", i + 1, p.pretraga(avion)[i].Vrsta, p.pretraga(avion)[i].Sjedista, p.pretraga(avion)[i].ID);
+                                    Console.WriteLine("Avion {0}: \nVrsta: {1}, Broj sjedista: {2}, ID: {3}", i + 1, p.pretraga(avion)[i].Vrsta, p.pretraga(avion)[i].Sjedista, p.pretraga(avion)[i].ID);
                                 }
                                 LISTA: Console.WriteLine("Unesite vrstu aviona iz liste koji zelite: ");
                                 String zeljenaVrsta = Convert.ToString(Console.ReadLine());
@@ -507,10 +510,24 @@ namespace zadaca1
                     }
                     else
                     {
-                        if (duzina6) Console.WriteLine("Niste unijeli id sa 6 karaktera!");
-                        else Console.WriteLine("Klijent nije u bazi!");
-                        Console.WriteLine("Unesite ponovo: ");
-                        goto POCETAK;
+                        if (duzina6)
+                        {
+                            Console.WriteLine("Niste unijeli id sa 6 karaktera! Pokusajte ponovo: ");
+                            goto POCETAK;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Klijent nije u bazi!");
+                        VAR: Console.WriteLine("Unesite 1 za ponovni unos, 2 za povratak na meni: ");
+                            String var = Convert.ToString(Console.ReadLine());
+                            if (var == "1") goto POCETAK;
+                            else if (var == "2") goto MENI;
+                            else
+                            {
+                                Console.WriteLine("Pogresan unos! Pokusajte ponovo: ");
+                                goto VAR;
+                            }
+                        }
                     }
                     Console.WriteLine("Uspjesno iznajmljen avion!");
                     if(trenutniKlijent is DomaciDrzavljanin) {
@@ -571,7 +588,7 @@ namespace zadaca1
                     else {
                         Console.WriteLine("Lista svih obavijesti: ");
                         for(int i = 0; i < ke.Obavijesti.Count; i++) {
-                            Console.WriteLine("{0}. Obavijest: \n Tekst poruke: {1}, ID klijenta: {2}, Datum i vrijeme obavijesti: {3}", i + 1, ke.Obavijesti[i].Tekst, ke.Obavijesti[i].Sifra, ke.Obavijesti[i].DatumIvrijeme);
+                            Console.WriteLine("{0}. Obavijest: \nTekst poruke: {1}, ID klijenta: {2}, Datum i vrijeme obavijesti: {3}", i + 1, ke.Obavijesti[i].Tekst, ke.Obavijesti[i].Sifra, ke.Obavijesti[i].DatumIvrijeme);
                         }
                     }
                 }

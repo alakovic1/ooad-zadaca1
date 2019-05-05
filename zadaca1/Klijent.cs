@@ -11,7 +11,12 @@ namespace zadaca1
         private DateTime krajnjiIznajmi;
         public String Naziv { get { return imeIprezime; } set { imeIprezime = value; } }
         public DateTime Datum { get { return datumRodjenja; } set { datumRodjenja = value; } }
-        public String JMBG { get { return jmbg; } set { jmbg = value; } }
+        public String JMBG { get { return jmbg; } set {
+                if (value.Length == 6)
+                {
+                    jmbg = value;
+                }        
+        } }
         public Avion Avion { get { return avion; } set { avion = value; } }
         public DateTime PocetakDatum { get { return pocetniIznajmi; } set { pocetniIznajmi = value; } }
         public DateTime KrajDatum { get { return krajnjiIznajmi; } set { krajnjiIznajmi = value; } }

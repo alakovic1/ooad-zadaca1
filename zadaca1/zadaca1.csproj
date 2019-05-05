@@ -5,4 +5,12 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="class1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="class1">
+      <HintPath>..\..\..\class1\class1\bin\Debug\netcoreapp2.1\class1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
