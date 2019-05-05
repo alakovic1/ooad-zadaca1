@@ -15,6 +15,7 @@ namespace zadaca1
             Obavijest obavijest = new Obavijest(tekstPoruke,idKlijenta,DateTime.Now);
             ke.dodajObavijest(obavijest);
         }
+
         static void Main(string[] args)
         {
             KlasaElemenata ke = new KlasaElemenata();
@@ -578,7 +579,6 @@ namespace zadaca1
                     Console.WriteLine("Neispravan unos!"); 
                 }
             }
-            Console.ReadKey();
         }
     }
 }
