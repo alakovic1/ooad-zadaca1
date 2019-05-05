@@ -19,13 +19,13 @@ namespace zadaca1
             this.krajnjiDatumIznajmljivanja = k;
         }
 
-        public double RacunajCijenu(Klijent k)
+        public double RacunajCijenu(Klijent trenutniKlijent)
         {
             double cijena = 0;
             int brojDana = Math.Abs((krajnjiDatumIznajmljivanja - pocetniDatumIznajmljivanja).Days);
-            if (k.Avion is PutnickiAvion)
+            if (trenutniKlijent.Avion is PutnickiAvion)
             {
-                if (k.Avion is LetUnutarZemlje)
+                if (trenutniKlijent.Avion is LetUnutarZemlje)
                 {
                     cijena = brojDana * 120;
                     if (pocetniDatumIznajmljivanja.DayOfWeek.Equals("Saturday") || pocetniDatumIznajmljivanja.DayOfWeek.Equals("Sunday"))
@@ -33,7 +33,7 @@ namespace zadaca1
                         cijena += 500;
                     }
                 }
-                else if (k.Avion is LetUInostranstvo)
+                else if (trenutniKlijent.Avion is LetUInostranstvo)
                 {
                     cijena = brojDana * 200;
                     if (pocetniDatumIznajmljivanja.DayOfWeek.Equals("Saturday") || pocetniDatumIznajmljivanja.DayOfWeek.Equals("Sunday"))
@@ -42,10 +42,10 @@ namespace zadaca1
                     }
                 }
             }
-            else if (k.Avion is TeretniAvion)
+            else if (trenutniKlijent.Avion is TeretniAvion)
             {
                 cijena = brojDana * 350;
-                double tonaUkg = ((TeretniAvion)k.Avion).Kapacitet * 1000;
+                double tonaUkg = ((TeretniAvion) trenutniKlijent.Avion).Kapacitet * 1000;
                 cijena += tonaUkg * 0.02;
             }
             return cijena;
