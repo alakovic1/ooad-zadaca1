@@ -13,4 +13,7 @@
       <HintPath>..\..\..\class1\class1\bin\Debug\netcoreapp2.1\class1.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ConsoleHelper.cs" />
+  </ItemGroup>
 </Project>
