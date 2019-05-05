@@ -5,6 +5,16 @@ namespace zadaca1
 {
     class Program
     {
+        public delegate void MojDelegat(KlasaElemenata ke, String tekstPoruke, String idKlijenta);
+        public static void metodaZaObavijestiDELEGAT(KlasaElemenata ke, String tekstPoruke, String idKlijenta) {
+            MojDelegat delegat = metodaZaObavijesti;
+            delegat(ke,tekstPoruke,idKlijenta);
+        }
+        public static void metodaZaObavijesti(KlasaElemenata ke, String tekstPoruke, String idKlijenta)
+        {
+            Obavijest obavijest = new Obavijest(tekstPoruke,idKlijenta,DateTime.Now);
+            ke.dodajObavijest(obavijest);
+        }
         static void Main(string[] args)
         {
             KlasaElemenata ke = new KlasaElemenata();
@@ -337,8 +347,17 @@ namespace zadaca1
                             else
                             {
                                 Console.WriteLine("Avion nije pronadjen!");
-                                Console.WriteLine("Unesite ponovo avion:");
-                                goto UNOS;
+                                Console.WriteLine("Unesite tekst poruke za obavijest: ");
+                                String obavijest = Convert.ToString(Console.ReadLine());
+                                metodaZaObavijestiDELEGAT(ke, obavijest, trenutniKlijent.JMBG);
+                                GRESKA: Console.WriteLine("Unesite ponovo avion (1) ili se vratite na meni (2): ");
+                                String izbor = Convert.ToString(Console.ReadLine());
+                                if (izbor == "1") goto UNOS;
+                                else if (izbor == "2") goto MENI;
+                                else {
+                                    Console.WriteLine("Pogresan unos! Unesite ponovo: ");
+                                    goto GRESKA;
+                                }
                             }
                         }
                         else if (nacinPretrage == "2")
@@ -465,8 +484,18 @@ namespace zadaca1
                             else
                             {
                                 Console.WriteLine("Avion nije pronadjen!");
-                                Console.WriteLine("Unesite ponovo avion:");
-                                goto UNOS;
+                                Console.WriteLine("Unesite tekst poruke za obavijest: ");
+                                String obavijest = Convert.ToString(Console.ReadLine());
+                                metodaZaObavijestiDELEGAT(ke, obavijest, trenutniKlijent.JMBG);
+                                GRESKA2: Console.WriteLine("Unesite ponovo avion (1) ili se vratite na meni (2): ");
+                                String izbor = Convert.ToString(Console.ReadLine());
+                                if (izbor == "1") goto UNOS;
+                                else if (izbor == "2") goto MENI;
+                                else
+                                {
+                                    Console.WriteLine("Pogresan unos! Unesite ponovo: ");
+                                    goto GRESKA2;
+                                }
                             }
                         }
                         else
@@ -508,7 +537,15 @@ namespace zadaca1
                         }
                     }
                     if (ima) {
-                        if(trenutniKlijent.Avion.Vrsta == "") {
+                        try
+                        {
+                            if (trenutniKlijent.Avion == null)
+                            {
+                                Console.WriteLine("Nije nista iznajmljeno!");
+                                goto MENI;
+                            }
+                        }
+                        catch (Exception) {
                             Console.WriteLine("Nije nista iznajmljeno!");
                             goto MENI;
                         }
@@ -527,7 +564,15 @@ namespace zadaca1
                     }
                 }
                 else if(unos == "5") {
-                
+                    if(ke.Obavijesti.Count == 0) {
+                        Console.WriteLine("Nema obavijesti!");
+                    }
+                    else {
+                        Console.WriteLine("Lista svih obavijesti: ");
+                        for(int i = 0; i < ke.Obavijesti.Count; i++) {
+                            Console.WriteLine("{0}. Obavijest: \n Tekst poruke: {1}, ID klijenta: {2}, Datum i vrijeme obavijesti: {3}", i + 1, ke.Obavijesti[i].Tekst, ke.Obavijesti[i].Sifra, ke.Obavijesti[i].DatumIvrijeme);
+                        }
+                    }
                 }
                 else {
                     Console.WriteLine("Neispravan unos!"); 
