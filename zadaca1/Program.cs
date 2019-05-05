@@ -306,6 +306,11 @@ namespace zadaca1
                                     try
                                     {
                                         krajnjiDan = Convert.ToInt32(Console.ReadLine());
+                                        if (krajnjiDan <= 0 || krajnjiDan > 31)
+                                        {
+                                            Console.WriteLine("Neispravan dan! Unesite ponovo: ");
+                                            goto KRAJNJIDAN;
+                                        }
                                     }
                                     catch (Exception)
                                     {
@@ -317,6 +322,11 @@ namespace zadaca1
                                     try
                                     {
                                         krajnjiMjesec = Convert.ToInt32(Console.ReadLine());
+                                        if (krajnjiMjesec <= 0 || krajnjiMjesec > 12)
+                                        {
+                                            Console.WriteLine("Neispravan mjesec! Unesite ponovo: ");
+                                            goto KRAJNJIMJESEC;
+                                        }
                                     }
                                     catch (Exception)
                                     {
@@ -441,6 +451,11 @@ namespace zadaca1
                                     try
                                     {
                                         krajnjiDan = Convert.ToInt32(Console.ReadLine());
+                                        if (krajnjiDan <= 0 || krajnjiDan > 31)
+                                        {
+                                            Console.WriteLine("Neispravan dan! Unesite ponovo: ");
+                                            goto KRAJNJIDAN2;
+                                        }
                                     }
                                     catch (Exception)
                                     {
@@ -452,6 +467,11 @@ namespace zadaca1
                                     try
                                     {
                                         krajnjiMjesec = Convert.ToInt32(Console.ReadLine());
+                                        if (krajnjiMjesec <= 0 || krajnjiMjesec > 12)
+                                        {
+                                            Console.WriteLine("Neispravan mjesec! Unesite ponovo: ");
+                                            goto KRAJNJIMJESEC2;
+                                        }
                                     }
                                     catch (Exception)
                                     {
